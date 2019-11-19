@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">VITAE</string>
+    <string name="title_activity_search_display">SearchDisplay</string>
+    <string name="title_activity_search">Search</string>
 </resources>
