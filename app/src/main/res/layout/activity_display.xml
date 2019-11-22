@@ -12,5 +12,42 @@
 
         app:videoId="lDosBozB9jw"
         app:autoPlay="true"
-        app:showFullScreenButton="true" />
+        app:showFullScreenButton="true" >
+
+    </com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView>
+
+    <LinearLayout
+        android:id="@+id/FQ"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/titleQA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Video QA" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="write"
+            android:text="Button" />
+
+        <EditText
+            android:id="@+id/editText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Name" />
+
+        <TextView
+            android:id="@+id/question1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Question 1" />
+    </LinearLayout>
+
 </LinearLayout>
