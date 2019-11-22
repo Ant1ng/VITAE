@@ -30,7 +30,7 @@ public class Search extends AppCompatActivity {
 
     final String TAG = "SEARCH";
 
-    ArrayList currentVideos;
+    public ArrayList<Video> currentVideos;
 
 
     @Override
@@ -49,8 +49,9 @@ public class Search extends AppCompatActivity {
     }
 
     protected void showResults() {
+        Video vid1 = currentVideos.get(0);
         ImageView vid1_img = this.findViewById(R.id.vid1_img);
-        Picasso.get().load("https://i.imgur.com/tGbaZCY.jpg").placeholder(R.drawable.loop_foreground).fit().centerCrop().into(vid1_img);
+        Picasso.get().load(vid1.thumbnailURL).placeholder(R.drawable.loop_foreground).fit().centerCrop().into(vid1_img);
         vid1_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,8 +60,9 @@ public class Search extends AppCompatActivity {
             }
         });
 
+        Video vid2 = currentVideos.get(1);
         ImageView vid2_img = this.findViewById(R.id.vid2_img);
-        Picasso.get().load("https://i.imgur.com/tGbaZCY.jpg").placeholder(R.drawable.loop_foreground).fit().centerCrop().into(vid2_img);
+        Picasso.get().load(vid2.thumbnailURL).placeholder(R.drawable.loop_foreground).fit().centerCrop().into(vid2_img);
         vid2_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,8 +71,9 @@ public class Search extends AppCompatActivity {
             }
         });
 
+        Video vid3 = currentVideos.get(2);
         ImageView vid3_img = this.findViewById(R.id.vid3_img);
-        Picasso.get().load("https://i.imgur.com/tGbaZCY.jpg").placeholder(R.drawable.loop_foreground).fit().centerCrop().into(vid3_img);
+        Picasso.get().load(vid3.thumbnailURL).placeholder(R.drawable.loop_foreground).fit().centerCrop().into(vid3_img);
         vid3_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,8 +82,9 @@ public class Search extends AppCompatActivity {
             }
         });
 
+        Video vid4 = currentVideos.get(3);
         ImageView vid4_img = this.findViewById(R.id.vid4_img);
-        Picasso.get().load("https://i.imgur.com/tGbaZCY.jpg").placeholder(R.drawable.loop_foreground).fit().centerCrop().into(vid4_img);
+        Picasso.get().load(vid4.thumbnailURL).placeholder(R.drawable.loop_foreground).fit().centerCrop().into(vid4_img);
         vid4_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,8 +93,9 @@ public class Search extends AppCompatActivity {
             }
         });
 
+        Video vid5 = currentVideos.get(3);
         ImageView vid5_img = this.findViewById(R.id.vid5_img);
-        Picasso.get().load("https://i.imgur.com/tGbaZCY.jpg").placeholder(R.drawable.loop_foreground).fit().centerCrop().into(vid5_img);
+        Picasso.get().load(vid5.thumbnailURL).placeholder(R.drawable.loop_foreground).fit().centerCrop().into(vid5_img);
         vid5_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
