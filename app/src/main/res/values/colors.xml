@@ -3,4 +3,8 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="OnceaScent">#A2C4C9</color>
+    <color name="GrayLike">#434141</color>
+    <color name="BlackLike">#333333</color>
+    <color name="TintedWhite">#E5E5E5</color>
 </resources>
