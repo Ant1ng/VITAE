@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.LinearLayout.LayoutParams;
@@ -13,18 +14,19 @@ import android.widget.LinearLayout.LayoutParams;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Display extends AppCompatActivity {
 
-    private ArrayList<String> text;
+    private Set<String> text;
     private LinearLayout faq;
+    private final String filename = "lol";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,29 +35,19 @@ public class Display extends AppCompatActivity {
         YouTubePlayerView youTubePlayerView = findViewById(R.id.youtube_player_view);
         getLifecycle().addObserver(youTubePlayerView);
 
-        text = new ArrayList<>();
-        faq = findViewById(R.id.FQ);
+        text = new HashSet<>();
+        faq = findViewById(R.id.FAQ);
         initFAQ();
-        /*String filename = "myfile";
-        String fileContents = "Hello world!";
-        FileOutputStream outputStream;
-
-        try {
-            outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
-            outputStream.write(fileContents.getBytes());
-            outputStream.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
     }
-
-    String filename = "myfile";
 
     protected void initFAQ() {
         try {
             FileInputStream fis = openFileInput(filename);
             BufferedReader reader = new BufferedReader(new InputStreamReader(fis));
-            text.add(reader.readLine());
+            String line;
+            while ((line = reader.readLine()) != null) {
+                text.add(line);
+            }
         }
         catch (FileNotFoundException e) {
             text.add("Rip");
@@ -63,18 +55,78 @@ public class Display extends AppCompatActivity {
         catch (IOException e) {
             text.add("Ripperino");
         }
-        for (String i : text) {
-            writeQuestion(i);
+        restartQuestions();
+    }
+
+    public void write(View view) {
+        TextView questionView = findViewById(R.id.editQuestion);
+        String question;
+        if ((question = questionView.getText().toString()).trim().length() > 0) {
+            text.add(question);
+            restartQuestions();
+            writeFile();
         }
     }
 
-    private void writeQuestion(String question) {
-        TextView textView1 = new TextView(this);
-        textView1.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
+    private void writeFile() {
+        FileOutputStream outputStream;
+
+        try {
+            outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
+            for (String i : text) {
+                outputStream.write(i.getBytes());
+                outputStream.write("\n".getBytes());
+            }
+            outputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void writeQuestion(final String question) {
+        final LinearLayout questionEntry = new LinearLayout(getBaseContext());
+
+        questionEntry.setOrientation(LinearLayout.HORIZONTAL);
+
+        TextView textView = new TextView(this);
+        textView.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,
                 LayoutParams.WRAP_CONTENT));
-        textView1.setText(question);
-        textView1.setBackgroundColor(0xff66ff66); // hex color 0xAARRGGBB
-        textView1.setPadding(20, 20, 20, 20);// in pixels (left, top, right, bottom)
-        faq.addView(textView1);
-    } 
+        textView.setText(question);
+        questionEntry.addView(textView);
+        questionEntry.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                Intent intent = new Intent(getBaseContext(), Answers.class);
+                intent.putExtra("question", question);
+                startActivity(intent);
+             }
+         });
+
+        TextView blank = new TextView(this);
+        questionEntry.addView(blank);
+        blank.setLayoutParams(new LayoutParams(
+                LayoutParams.WRAP_CONTENT,
+                LayoutParams.WRAP_CONTENT,
+                1.0f));
+
+        Button delete = new Button(getBaseContext());
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                text.remove(question);
+                faq.removeView(questionEntry);
+                writeFile();
+            }
+        });
+        questionEntry.addView(delete);
+
+        faq.addView(questionEntry);
+    }
+
+    private void restartQuestions() {
+        faq.removeAllViews();
+        for (String s : text) {
+            writeQuestion(s);
+        }
+    }
 }

@@ -10,44 +10,44 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        app:videoId="lDosBozB9jw"
         app:autoPlay="true"
-        app:showFullScreenButton="true" >
+        app:showFullScreenButton="true"
+        app:videoId="lDosBozB9jw">
 
     </com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView>
 
-    <LinearLayout
-        android:id="@+id/FQ"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_weight="1">
 
-        <TextView
-            android:id="@+id/titleQA"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/FAQ"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Video QA" />
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/editQuestion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:hint="Question"
+            android:inputType="textPersonName" />
 
         <Button
             android:id="@+id/button"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="write"
-            android:text="Button" />
-
-        <EditText
-            android:id="@+id/editText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Name" />
-
-        <TextView
-            android:id="@+id/question1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Question 1" />
+            android:text="+" />
     </LinearLayout>
 
 </LinearLayout>
