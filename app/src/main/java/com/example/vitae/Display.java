@@ -2,7 +2,6 @@ package com.example.vitae;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -13,12 +12,6 @@ import android.widget.LinearLayout.LayoutParams;
 
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -41,20 +34,7 @@ public class Display extends AppCompatActivity {
     }
 
     protected void initFAQ() {
-        try {
-            FileInputStream fis = openFileInput(filename);
-            BufferedReader reader = new BufferedReader(new InputStreamReader(fis));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                text.add(line);
-            }
-        }
-        catch (FileNotFoundException e) {
-            text.add("Rip");
-        }
-        catch (IOException e) {
-            text.add("Ripperino");
-        }
+        text = FileUtils.readFile(getBaseContext(), filename);
         restartQuestions();
     }
 
@@ -64,22 +44,7 @@ public class Display extends AppCompatActivity {
         if ((question = questionView.getText().toString()).trim().length() > 0) {
             text.add(question);
             restartQuestions();
-            writeFile();
-        }
-    }
-
-    private void writeFile() {
-        FileOutputStream outputStream;
-
-        try {
-            outputStream = openFileOutput(filename, Context.MODE_PRIVATE);
-            for (String i : text) {
-                outputStream.write(i.getBytes());
-                outputStream.write("\n".getBytes());
-            }
-            outputStream.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+            FileUtils.writeFile(getBaseContext(), filename, text);
         }
     }
 
@@ -115,7 +80,8 @@ public class Display extends AppCompatActivity {
             public void onClick(View v) {
                 text.remove(question);
                 faq.removeView(questionEntry);
-                writeFile();
+                deleteFile(question);
+                FileUtils.writeFile(getBaseContext(), filename, text);
             }
         });
         questionEntry.addView(delete);

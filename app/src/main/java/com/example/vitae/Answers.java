@@ -9,6 +9,7 @@ import android.widget.TextView;
 public class Answers extends AppCompatActivity {
 
     Intent intent;
+    String question;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +17,9 @@ public class Answers extends AppCompatActivity {
         setContentView(R.layout.activity_answers);
         intent = getIntent();
         TextView textView = findViewById(R.id.textView);
-        textView.setText(intent.getStringExtra("question"));
+        question = intent.getStringExtra("question");
+        textView.setText(question);
     }
+
+
 }
