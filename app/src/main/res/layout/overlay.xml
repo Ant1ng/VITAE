@@ -27,7 +27,7 @@
     <View
         android:id="@+id/top_bar"
         android:layout_width="match_parent"
-        android:layout_height="72dp"
+        android:layout_height="56dp"
         android:background="@color/BlackLike"
         android:elevation="4dp"
         app:layout_constraintTop_toTopOf="parent"
@@ -36,7 +36,7 @@
     <View
         android:id="@+id/bot_bar"
         android:layout_width="match_parent"
-        android:layout_height="72dp"
+        android:layout_height="56dp"
         android:background="@color/BlackLike"
         android:elevation="4dp"
         app:layout_constraintBottom_toBottomOf="parent"

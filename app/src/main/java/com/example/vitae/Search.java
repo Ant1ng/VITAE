@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.squareup.picasso.Picasso;
 
@@ -62,6 +63,13 @@ public class Search extends AppCompatActivity {
     protected void showResults() {
         Video vid1 = currentVideos.get(0);
         ImageView vid1_img = this.findViewById(R.id.vid1_img);
+        TextView vid1_title = this.findViewById(R.id.vid1_title);
+        TextView vid1_user = this.findViewById(R.id.vid1_user);
+        TextView vid1_views = this.findViewById(R.id.vid1_views);
+        String trimmed_title = vid1.title.substring(0,50);
+        vid1_title.setText(trimmed_title.substring(0, trimmed_title.lastIndexOf(" ")));
+        vid1_user.setVisibility(TextView.INVISIBLE);
+        vid1_views.setVisibility(TextView.INVISIBLE);
         Picasso.get().load(vid1.thumbnailURL).placeholder(R.drawable.loop_foreground).fit().centerCrop().into(vid1_img);
         vid1_img.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +81,13 @@ public class Search extends AppCompatActivity {
 
         Video vid2 = currentVideos.get(1);
         ImageView vid2_img = this.findViewById(R.id.vid2_img);
+        TextView vid2_title = this.findViewById(R.id.vid2_title);
+        TextView vid2_user = this.findViewById(R.id.vid2_user);
+        TextView vid2_views = this.findViewById(R.id.vid2_views);
+        trimmed_title = vid2.title.substring(0,30);
+        vid2_title.setText(trimmed_title.substring(0, trimmed_title.lastIndexOf(" ")) + " ...");
+        vid2_user.setVisibility(TextView.INVISIBLE);
+        vid2_views.setVisibility(TextView.INVISIBLE);
         Picasso.get().load(vid2.thumbnailURL).placeholder(R.drawable.loop_foreground).fit().centerCrop().into(vid2_img);
         vid2_img.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,6 +99,13 @@ public class Search extends AppCompatActivity {
 
         Video vid3 = currentVideos.get(2);
         ImageView vid3_img = this.findViewById(R.id.vid3_img);
+        TextView vid3_title = this.findViewById(R.id.vid3_title);
+        TextView vid3_user = this.findViewById(R.id.vid3_user);
+        TextView vid3_views = this.findViewById(R.id.vid3_views);
+        trimmed_title = vid3.title.substring(0,30);
+        vid3_title.setText(trimmed_title.substring(0, trimmed_title.lastIndexOf(" ")) + " ...");
+        vid3_user.setVisibility(TextView.INVISIBLE);
+        vid3_views.setVisibility(TextView.INVISIBLE);
         Picasso.get().load(vid3.thumbnailURL).placeholder(R.drawable.loop_foreground).fit().centerCrop().into(vid3_img);
         vid3_img.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,6 +117,13 @@ public class Search extends AppCompatActivity {
 
         Video vid4 = currentVideos.get(3);
         ImageView vid4_img = this.findViewById(R.id.vid4_img);
+        TextView vid4_title = this.findViewById(R.id.vid4_title);
+        TextView vid4_user = this.findViewById(R.id.vid4_user);
+        TextView vid4_views = this.findViewById(R.id.vid4_views);
+        trimmed_title = vid4.title.substring(0,30);
+        vid4_title.setText(trimmed_title.substring(0, trimmed_title.lastIndexOf(" ")) + " ...");
+        vid4_user.setVisibility(TextView.INVISIBLE);
+        vid4_views.setVisibility(TextView.INVISIBLE);
         Picasso.get().load(vid4.thumbnailURL).placeholder(R.drawable.loop_foreground).fit().centerCrop().into(vid4_img);
         vid4_img.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,8 +133,15 @@ public class Search extends AppCompatActivity {
             }
         });
 
-        Video vid5 = currentVideos.get(3);
+        Video vid5 = currentVideos.get(4);
         ImageView vid5_img = this.findViewById(R.id.vid5_img);
+        TextView vid5_title = this.findViewById(R.id.vid5_title);
+        TextView vid5_user = this.findViewById(R.id.vid5_user);
+        TextView vid5_views = this.findViewById(R.id.vid5_views);
+        trimmed_title = vid5.title.substring(0,30);
+        vid5_title.setText(trimmed_title.substring(0, trimmed_title.lastIndexOf(" ")) + " ...");
+        vid5_user.setVisibility(TextView.INVISIBLE);
+        vid5_views.setVisibility(TextView.INVISIBLE);
         Picasso.get().load(vid5.thumbnailURL).placeholder(R.drawable.loop_foreground).fit().centerCrop().into(vid5_img);
         vid5_img.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -19,7 +19,7 @@
         android:fontFamily="@font/roboto"
         android:text="views"
         android:textColor="@android:color/black"
-        android:textSize="12sp"
+        android:textSize="10dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toStartOf="@+id/guideline2" />
@@ -29,11 +29,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="10dp"
         android:fontFamily="@font/roboto"
         android:text="user"
         android:textColor="#484848"
-        android:textSize="12sp"
+        android:textSize="8dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintStart_toEndOf="@+id/vid1_title" />
 
@@ -46,7 +46,7 @@
         android:fontFamily="@font/roboto"
         android:text="title"
         android:textColor="@android:color/black"
-        android:textSize="14sp"
+        android:textSize="12.5dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="@+id/guideline" />
@@ -73,7 +73,7 @@
         android:fontFamily="@font/roboto"
         android:text="views"
         android:textColor="@android:color/black"
-        android:textSize="8sp"
+        android:textSize="8dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintEnd_toStartOf="@+id/guideline5" />
@@ -87,7 +87,7 @@
         android:fontFamily="@font/roboto"
         android:text="user"
         android:textColor="#484848"
-        android:textSize="8sp"
+        android:textSize="8dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintStart_toEndOf="@+id/vid2_title" />
 
@@ -100,7 +100,7 @@
         android:fontFamily="@font/roboto"
         android:text="title"
         android:textColor="@android:color/black"
-        android:textSize="10.5sp"
+        android:textSize="10.5dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintStart_toStartOf="@+id/guideline" />
@@ -129,7 +129,7 @@
         android:fontFamily="@font/roboto"
         android:text="views"
         android:textColor="@android:color/black"
-        android:textSize="8sp"
+        android:textSize="8dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintEnd_toStartOf="@+id/guideline2" />
@@ -143,7 +143,7 @@
         android:fontFamily="@font/roboto"
         android:text="user"
         android:textColor="#484848"
-        android:textSize="8sp"
+        android:textSize="8dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintStart_toEndOf="@+id/vid3_title" />
 
@@ -156,7 +156,7 @@
         android:fontFamily="@font/roboto"
         android:text="title"
         android:textColor="@android:color/black"
-        android:textSize="10.5sp"
+        android:textSize="10.5dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintStart_toStartOf="@+id/guideline5" />
@@ -183,7 +183,7 @@
         android:fontFamily="@font/roboto"
         android:text="views"
         android:textColor="@android:color/black"
-        android:textSize="8sp"
+        android:textSize="8dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toStartOf="@+id/guideline5" />
@@ -197,7 +197,7 @@
         android:fontFamily="@font/roboto"
         android:text="user"
         android:textColor="#484848"
-        android:textSize="8sp"
+        android:textSize="8dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintStart_toEndOf="@+id/vid4_title" />
 
@@ -210,7 +210,7 @@
         android:fontFamily="@font/roboto"
         android:text="title"
         android:textColor="@android:color/black"
-        android:textSize="10.5sp"
+        android:textSize="10.5dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintStart_toStartOf="@+id/guideline" />
@@ -238,7 +238,7 @@
         android:fontFamily="@font/roboto"
         android:text="views"
         android:textColor="@android:color/black"
-        android:textSize="8sp"
+        android:textSize="8dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintEnd_toStartOf="@+id/guideline2" />
@@ -252,7 +252,7 @@
         android:fontFamily="@font/roboto"
         android:text="user"
         android:textColor="#484848"
-        android:textSize="8sp"
+        android:textSize="8dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintStart_toEndOf="@+id/vid5_title" />
 
@@ -265,7 +265,7 @@
         android:fontFamily="@font/roboto"
         android:text="title"
         android:textColor="@android:color/black"
-        android:textSize="10.5sp"
+        android:textSize="10.5dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
         app:layout_constraintStart_toStartOf="@+id/guideline5" />
@@ -288,7 +288,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.54" />
+        app:layout_constraintGuide_percent="0.5" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline5"
@@ -302,14 +302,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.89" />
+        app:layout_constraintGuide_percent="0.91" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.715" />
+        app:layout_constraintGuide_percent="0.705" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -323,7 +323,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.19" />
+        app:layout_constraintGuide_percent="0.12" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
