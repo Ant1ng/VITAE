@@ -61,7 +61,7 @@ public class Search extends AppCompatActivity {
     }
 
     protected void showResults() {
-        Video vid1 = currentVideos.get(0);
+        final Video vid1 = currentVideos.get(0);
         ImageView vid1_img = this.findViewById(R.id.vid1_img);
         TextView vid1_title = this.findViewById(R.id.vid1_title);
         TextView vid1_user = this.findViewById(R.id.vid1_user);
@@ -74,12 +74,12 @@ public class Search extends AppCompatActivity {
         vid1_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToDisplay(v);
-                Toast.makeText(Search.this, "vid1_img", Toast.LENGTH_SHORT).show();
+                goToDisplay(v, vid1.videoID);
+                // Toast.makeText(Search.this, "vid1_img", Toast.LENGTH_SHORT).show();
             }
         });
 
-        Video vid2 = currentVideos.get(1);
+        final Video vid2 = currentVideos.get(1);
         ImageView vid2_img = this.findViewById(R.id.vid2_img);
         TextView vid2_title = this.findViewById(R.id.vid2_title);
         TextView vid2_user = this.findViewById(R.id.vid2_user);
@@ -92,12 +92,12 @@ public class Search extends AppCompatActivity {
         vid2_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToDisplay(v);
-                Toast.makeText(Search.this, "vid2_img", Toast.LENGTH_SHORT).show();
+                goToDisplay(v, vid2.videoID);
+                // Toast.makeText(Search.this, "vid2_img", Toast.LENGTH_SHORT).show();
             }
         });
 
-        Video vid3 = currentVideos.get(2);
+        final Video vid3 = currentVideos.get(2);
         ImageView vid3_img = this.findViewById(R.id.vid3_img);
         TextView vid3_title = this.findViewById(R.id.vid3_title);
         TextView vid3_user = this.findViewById(R.id.vid3_user);
@@ -110,12 +110,12 @@ public class Search extends AppCompatActivity {
         vid3_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToDisplay(v);
-                Toast.makeText(Search.this, "vid3_img", Toast.LENGTH_SHORT).show();
+                goToDisplay(v, vid3.videoID);
+                // Toast.makeText(Search.this, "vid3_img", Toast.LENGTH_SHORT).show();
             }
         });
 
-        Video vid4 = currentVideos.get(3);
+        final Video vid4 = currentVideos.get(3);
         ImageView vid4_img = this.findViewById(R.id.vid4_img);
         TextView vid4_title = this.findViewById(R.id.vid4_title);
         TextView vid4_user = this.findViewById(R.id.vid4_user);
@@ -128,12 +128,12 @@ public class Search extends AppCompatActivity {
         vid4_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToDisplay(v);
-                Toast.makeText(Search.this, "vid4_img", Toast.LENGTH_SHORT).show();
+                goToDisplay(v, vid4.videoID);
+                // Toast.makeText(Search.this, "vid4_img", Toast.LENGTH_SHORT).show();
             }
         });
 
-        Video vid5 = currentVideos.get(4);
+        final Video vid5 = currentVideos.get(4);
         ImageView vid5_img = this.findViewById(R.id.vid5_img);
         TextView vid5_title = this.findViewById(R.id.vid5_title);
         TextView vid5_user = this.findViewById(R.id.vid5_user);
@@ -146,16 +146,18 @@ public class Search extends AppCompatActivity {
         vid5_img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToDisplay(v);
-                Toast.makeText(Search.this, "vid5_img", Toast.LENGTH_SHORT).show();
+                goToDisplay(v, vid5.videoID);
+                // Toast.makeText(Search.this, "vid5_img", Toast.LENGTH_SHORT).show();
             }
         });
 
     }
 
     /** Called when the user taps the Video button */
-    public void goToDisplay(View view) {
+    public void goToDisplay(View view, String videoID) {
+        Log.d(TAG, "goToDisplay: " + "called with " + videoID);
         Intent intent = new Intent(this, Display.class);
+        intent.putExtra("videoID", videoID);
         startActivity(intent);
     }
 
