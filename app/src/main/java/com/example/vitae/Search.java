@@ -31,6 +31,7 @@ public class Search extends AppCompatActivity {
     final String TAG = "SEARCH";
 
     public ArrayList<Video> currentVideos;
+    boolean loaded = false;
 
 
     @Override
@@ -46,6 +47,16 @@ public class Search extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        while(!loaded) {
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            Log.d(TAG, "onCreate: " + "wait");
+        }
+        Log.d(TAG, "onCreate: " + "show");
+        showResults();
     }
 
     protected void showResults() {
@@ -119,9 +130,9 @@ public class Search extends AppCompatActivity {
     }
 
     void setCurrentVideos(ArrayList<Video> videoList) {
+        Log.d(TAG, "setCurrentVideos: " + "called");
         this.currentVideos = videoList;
-        Log.d(TAG, "setCurrentVideos: " + currentVideos.size());
-        showResults();
+        loaded = true;
     }
 
     class Video {
