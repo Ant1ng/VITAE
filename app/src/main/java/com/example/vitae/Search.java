@@ -3,11 +3,14 @@ package com.example.vitae;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +29,7 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 public class Search extends AppCompatActivity {
 
@@ -42,22 +46,41 @@ public class Search extends AppCompatActivity {
         setContentView(R.layout.activity_search);
         currentVideos = new ArrayList<>();
 
-        try {
-            fetchYoutube("Software+Engineer");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        while(!loaded) {
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+        final EditText searchBar = (EditText) findViewById(R.id.search);
+        searchBar.setOnKeyListener(new View.OnKeyListener() {
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
+                        (keyCode == KeyEvent.KEYCODE_ENTER)) {
+                    // Perform action on key press
+                    String text = searchBar.getText().toString();
+                    text = text.replace(" ", "+");
+                    try {
+                        fetchYoutube(text);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (ExecutionException e) {
+                        e.printStackTrace();
+                    }
+                    showResults();
+                    return true;
+                }
+                return false;
             }
-            Log.d(TAG, "onCreate: " + "wait");
-        }
-        Log.d(TAG, "onCreate: " + "show");
-        showResults();
+        });
+
+
+//        while(!loaded) {
+//            try {
+//                Thread.sleep(100);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//            Log.d(TAG, "onCreate: " + "wait");
+//        }
+//        Log.d(TAG, "onCreate: " + "show");
+//        showResults();
     }
 
     protected void showResults() {
@@ -161,9 +184,9 @@ public class Search extends AppCompatActivity {
         startActivity(intent);
     }
 
-    void fetchYoutube(String query) throws IOException {
+    void fetchYoutube(String query) throws IOException, ExecutionException, InterruptedException {
         Log.d(TAG, "fetchYoutube: " + "called");
-        new getYoutubeData().execute(query);
+        new getYoutubeData().execute(query).get();
 
     }
 
