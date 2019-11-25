@@ -323,7 +323,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.12" />
+        app:layout_constraintGuide_percent="0.19" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
@@ -335,13 +335,15 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
         style="@style/LoginTextInputLayoutStyle"
-        android:layout_width="396dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="18dp"
+        android:layout_width="393dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="2dp"
         android:textColorHint="#fff"
         android:theme="@style/LoginTextInputLayoutStyle"
         app:boxStrokeColor="#fff"
-        app:layout_constraintBottom_toTopOf="@+id/vid1_img"
+        app:layout_constraintBottom_toTopOf="@id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/include"
@@ -351,14 +353,14 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/search"
             android:layout_width="383dp"
-            android:layout_height="56dp"
+            android:layout_height="61dp"
             android:layout_marginStart="5dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="2dp"
             android:layout_marginBottom="2dp"
             android:clickable="false"
-            android:textColor="#fff"
-            android:hint="Search" />
+            android:hint="Search"
+            android:textColor="#fff" />
     </com.google.android.material.textfield.TextInputLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

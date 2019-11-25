@@ -34,6 +34,7 @@ import java.util.concurrent.ExecutionException;
 public class Search extends AppCompatActivity {
 
     final String TAG = "SEARCH";
+    private final String API_KEY = "AIzaSyBce8QFxGpNrYiO2w8OCRbSp7cTBmcE9JM";
 
     public ArrayList<Video> currentVideos;
     boolean loaded = false;
@@ -278,7 +279,7 @@ public class Search extends AppCompatActivity {
             HttpURLConnection urlConnection = null;
             URL urlObj = null;
             try {
-                urlObj = new URL("https://www.googleapis.com/youtube/v3/search?part=snippet&q=A+Day+in+the+life+of+a+" + query + "&type=video&key=AIzaSyBce8QFxGpNrYiO2w8OCRbSp7cTBmcE9JM");
+                urlObj = new URL("https://www.googleapis.com/youtube/v3/search?part=snippet&q=A+Day+in+the+life+of+a+" + query + "&type=video&key=" + API_KEY);
             } catch (MalformedURLException e) {
                 e.printStackTrace();
             }
