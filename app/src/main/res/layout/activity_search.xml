@@ -357,6 +357,7 @@
             android:layout_marginEnd="2dp"
             android:layout_marginBottom="2dp"
             android:clickable="false"
+            android:textColor="#fff"
             android:hint="Search" />
     </com.google.android.material.textfield.TextInputLayout>
 
