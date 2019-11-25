@@ -20,11 +20,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Entries extends AppCompatActivity {
-    public Collection<String> entryList;
-    public LinearLayout linearLayout;
-    public String filename;
+    private Collection<String> entryList;
+    private LinearLayout linearLayout;
+    private String filename;
 
-    protected void init() {
+    protected void init(String filename, LinearLayout linearLayout) {
+        this.filename = filename;
+        this.linearLayout = linearLayout;
         entryList = readFile(getBaseContext(), filename);
         restartEntries();
     }
