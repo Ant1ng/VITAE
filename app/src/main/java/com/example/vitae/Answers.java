@@ -14,7 +14,7 @@ public class Answers extends Entries {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_answers);
         Intent intent = getIntent();
-        TextView textView = findViewById(R.id.textView);
+        TextView textView = findViewById(R.id.questionView);
 
         String question = intent.getStringExtra("question");
         String id = intent.getStringExtra("id");

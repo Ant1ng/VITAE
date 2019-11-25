@@ -47,6 +47,7 @@ public class Entries extends AppCompatActivity {
         questionEntry.setOrientation(LinearLayout.HORIZONTAL);
 
         TextView textView = new TextView(this);
+        textView.setTextAppearance(this, R.style.BaseText);
         textView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT));
         textView.setText(entry);
