@@ -9,13 +9,13 @@
     <include
         android:id="@+id/include"
         layout="@layout/overlay"
-        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteX="-106dp"
         tools:layout_editor_absoluteY="0dp" />
 
     <View
         android:id="@+id/vid1_border"
-        android:layout_width="379dp"
-        android:layout_height="198dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
@@ -23,10 +23,8 @@
         android:background="@color/TintedWhite"
         app:layout_constraintBottom_toTopOf="@+id/guideline4"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline3"
-        app:layout_constraintVertical_bias="0.967" />
+        app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
     <View
         android:id="@+id/vid2_border"
@@ -123,3 +121,4 @@
         app:layout_constraintGuide_percent="0.705" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

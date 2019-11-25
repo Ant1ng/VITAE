@@ -8,9 +8,7 @@
 
     <include
         android:id="@+id/include"
-        layout="@layout/search_overlay"
-        tools:layout_editor_absoluteX="-16dp"
-        tools:layout_editor_absoluteY="16dp" />
+        layout="@layout/search_overlay" />
 
     <TextView
         android:id="@+id/vid1_views"
@@ -55,18 +53,16 @@
 
     <ImageView
         android:id="@+id/vid1_img"
-        android:layout_width="371dp"
-        android:layout_height="181dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="4dp"
         app:layout_constraintBottom_toTopOf="@+id/vid1_title"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        app:layout_constraintTop_toTopOf="@+id/guideline3"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="@+id/guideline3" />
 
     <TextView
         android:id="@+id/vid2_views"
@@ -299,7 +295,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="205dp" />
+        app:layout_constraintGuide_percent="0.5" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline6"
@@ -327,7 +323,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.15" />
+        app:layout_constraintGuide_percent="0.12" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
