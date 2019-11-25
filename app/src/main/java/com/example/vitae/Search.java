@@ -215,7 +215,7 @@ public class Search extends AppCompatActivity {
             JSONObject id = data.getJSONObject("id");
             JSONObject snippet = data.getJSONObject("snippet");
             JSONObject thumbnails = snippet.getJSONObject("thumbnails");
-            JSONObject defaultThumbnail = thumbnails.getJSONObject("default");
+            JSONObject defaultThumbnail = thumbnails.getJSONObject("high");
 
             this.thumbnailURL = defaultThumbnail.getString("url");
             this.publishedAt = snippet.getString("publishedAt");
