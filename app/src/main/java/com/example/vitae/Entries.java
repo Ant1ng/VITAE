@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -62,12 +63,13 @@ public class Entries extends AppCompatActivity {
             }
         });
 
-        TextView blank = new TextView(this);
+        /*TextView blank = new TextView(this);
         questionEntry.addView(blank);
         blank.setLayoutParams(new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 1.0f));
+         */
 
         Button delete = new Button(getBaseContext());
         delete.setOnClickListener(new View.OnClickListener() {
