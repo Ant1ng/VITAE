@@ -91,12 +91,23 @@ public class Search extends AppCompatActivity {
     }
 
     protected void showResults() {
+        if (currentVideos.size() < 5) {
+            return;
+        }
+
         final Video vid1 = currentVideos.get(0);
         ImageView vid1_img = this.findViewById(R.id.vid1_img);
         TextView vid1_title = this.findViewById(R.id.vid1_title);
         TextView vid1_user = this.findViewById(R.id.vid1_user);
         TextView vid1_views = this.findViewById(R.id.vid1_views);
-        String trimmed_title = vid1.title.substring(0,50);
+
+        String trimmed_title = "";
+
+        try {
+            trimmed_title = vid1.title.substring(0,50);
+        } catch (IndexOutOfBoundsException e) {
+            trimmed_title = vid1.title;
+        }
         vid1_title.setText(trimmed_title.substring(0, trimmed_title.lastIndexOf(" ")));
         vid1_user.setVisibility(TextView.INVISIBLE);
         vid1_views.setVisibility(TextView.INVISIBLE);
@@ -114,7 +125,13 @@ public class Search extends AppCompatActivity {
         TextView vid2_title = this.findViewById(R.id.vid2_title);
         TextView vid2_user = this.findViewById(R.id.vid2_user);
         TextView vid2_views = this.findViewById(R.id.vid2_views);
-        trimmed_title = vid2.title.substring(0,30);
+
+        try {
+            trimmed_title = vid2.title.substring(0,30);
+        } catch(IndexOutOfBoundsException e) {
+            trimmed_title = vid2.title;
+        }
+
         vid2_title.setText(trimmed_title.substring(0, trimmed_title.lastIndexOf(" ")) + " ...");
         vid2_user.setVisibility(TextView.INVISIBLE);
         vid2_views.setVisibility(TextView.INVISIBLE);
@@ -132,7 +149,12 @@ public class Search extends AppCompatActivity {
         TextView vid3_title = this.findViewById(R.id.vid3_title);
         TextView vid3_user = this.findViewById(R.id.vid3_user);
         TextView vid3_views = this.findViewById(R.id.vid3_views);
-        trimmed_title = vid3.title.substring(0,30);
+
+        try {
+            trimmed_title = vid3.title.substring(0,30);
+        } catch (IndexOutOfBoundsException e) {
+            trimmed_title = vid3.title;
+        }
         vid3_title.setText(trimmed_title.substring(0, trimmed_title.lastIndexOf(" ")) + " ...");
         vid3_user.setVisibility(TextView.INVISIBLE);
         vid3_views.setVisibility(TextView.INVISIBLE);
@@ -150,7 +172,11 @@ public class Search extends AppCompatActivity {
         TextView vid4_title = this.findViewById(R.id.vid4_title);
         TextView vid4_user = this.findViewById(R.id.vid4_user);
         TextView vid4_views = this.findViewById(R.id.vid4_views);
-        trimmed_title = vid4.title.substring(0,30);
+        try {
+            trimmed_title = vid4.title.substring(0,30);
+        } catch (IndexOutOfBoundsException e) {
+            trimmed_title = vid4.title;
+        }
         vid4_title.setText(trimmed_title.substring(0, trimmed_title.lastIndexOf(" ")) + " ...");
         vid4_user.setVisibility(TextView.INVISIBLE);
         vid4_views.setVisibility(TextView.INVISIBLE);
