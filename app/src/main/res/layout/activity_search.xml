@@ -323,7 +323,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.2" />
+        app:layout_constraintGuide_percent="0.18" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
@@ -352,10 +352,7 @@
             android:id="@+id/search"
             android:layout_width="match_parent"
             android:layout_height="61dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="2dp"
-            android:layout_marginBottom="2dp"
+
             android:clickable="false"
             android:hint="Search"
             android:imeOptions="actionDone"
