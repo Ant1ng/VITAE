@@ -13,10 +13,11 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name = "BaseText" parent="TextAppearance.AppCompat">
+    <style name="BaseText" parent="TextAppearance.AppCompat">
         <item name="android:layout_marginEnd">8dp</item>
         <item name="android:layout_marginBottom">8dp</item>
         <item name="android:fontFamily">"@font/roboto"</item>
+        <item name="android:textColor">@color/TintedWhite</item>
         <item name="android:padding">15dp</item>
         <item name="android:textSize">20dp</item>
         <item name="android:textStyle">bold</item>
