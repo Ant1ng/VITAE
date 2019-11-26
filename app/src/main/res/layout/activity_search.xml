@@ -323,7 +323,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.19" />
+        app:layout_constraintGuide_percent="0.2" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
@@ -335,24 +335,22 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout"
         style="@style/LoginTextInputLayoutStyle"
-        android:layout_width="393dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="2dp"
+        android:imeOptions="actionDone"
         android:textColorHint="#fff"
         android:theme="@style/LoginTextInputLayoutStyle"
         app:boxStrokeColor="#fff"
         app:layout_constraintBottom_toTopOf="@id/guideline3"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/guideline2"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/include"
+        app:layout_constraintStart_toEndOf="@id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/include"
         app:layout_constraintVertical_bias="1.0">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/search"
-            android:layout_width="383dp"
+            android:layout_width="match_parent"
             android:layout_height="61dp"
             android:layout_marginStart="5dp"
             android:layout_marginTop="20dp"
@@ -360,6 +358,7 @@
             android:layout_marginBottom="2dp"
             android:clickable="false"
             android:hint="Search"
+            android:imeOptions="actionDone"
             android:textColor="#fff" />
     </com.google.android.material.textfield.TextInputLayout>
 
