@@ -1,18 +1,17 @@
 package com.example.vitae;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
+import android.widget.LinearLayout;
 
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
-public class Display extends AppCompatActivity {
+public class Display extends Entries {
 
     final String TAG = "DISPLAY";
     String videoID;
@@ -45,6 +44,7 @@ public class Display extends AppCompatActivity {
                 }
             }
         });
+        init(videoID, (LinearLayout) findViewById(R.id.FAQ));
     }
 
     @Override
