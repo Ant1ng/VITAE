@@ -1,9 +1,11 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:background="@color/GrayLike"
+    android:orientation="vertical"
+    tools:context=".Display">
 
     <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
         android:id="@+id/youtube_player_view"
@@ -13,38 +15,144 @@
 
     </com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView>
 
-    <ScrollView
+    <TextView
+        android:id="@+id/video_title"
+        style="@style/BaseText"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_height="wrap_content"
+        android:text="The Day of life of a Software Engineer"
+        android:textColor="@color/OnceaScent"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/viewCount"
+        style="@style/BaseText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="5dp"
+        android:paddingTop="0dp"
+        android:text="803k views - 8 hours ago" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="10dp">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="20dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:layout_width="84dp"
+            android:layout_height="60dp"
+            android:cropToPadding="true"
+            android:padding="3dp"
+            app:srcCompat="@drawable/portrait" />
 
         <LinearLayout
-            android:id="@+id/FAQ"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/author"
+                style="@style/BaseText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:text="Robert Patterson"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/job_title"
+                style="@style/BaseText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
+                android:text="Software Engineer at Google" />
+        </LinearLayout>
+
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:background="@color/BlackLike"
+        >
 
-        <EditText
-            android:id="@+id/editQuestion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="Enter question here..."
-            android:inputType="textPersonName" />
-
-        <Button
-            android:id="@+id/button"
+        <TextView
+            android:id="@+id/video_description"
+            style="@style/BaseText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="write"
-            android:text="+" />
+            android:background="@color/BlackLike"
+            android:paddingTop="20dp"
+            android:paddingBottom="10dp"
+            android:text="Video Description"
+            android:textColor="@color/OnceaScent"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+
     </LinearLayout>
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/BlackLike">
+
+        <TextView
+            android:id="@+id/faq_title"
+            style="@style/BaseText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/BlackLike"
+            android:paddingTop="10dp"
+            android:paddingBottom="20dp"
+            android:text="Questions and Answers"
+            android:textColor="@color/OnceaScent"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/FAQ"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/example_question"
+            style="@style/BaseText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:text="Q: What's the most interesting project you've worked on?"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/example_answer"
+            style="@style/BaseText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Answer: There was this amazing research project that I was part of which involved meeting tons of passionate people and encountering many diverse view points."
+            android:paddingBottom="10dp"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
