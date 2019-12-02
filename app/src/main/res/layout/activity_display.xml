@@ -16,19 +16,10 @@
 
     </com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView>
 
-    <ScrollView
+    <ListView
+        android:id="@+id/FAQ"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
-
-        <LinearLayout
-            android:id="@+id/FAQ"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
-
-        </LinearLayout>
-    </ScrollView>
+        android:layout_height="wrap_content" />
 
     <LinearLayout
         android:layout_width="match_parent"

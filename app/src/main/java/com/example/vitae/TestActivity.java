@@ -1,11 +1,10 @@
 package com.example.vitae;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.collection.ArraySet;
 
 import android.os.Bundle;
 import android.widget.ListView;
-
-import java.util.ArrayList;
 
 public class TestActivity extends AppCompatActivity {
 
@@ -15,7 +14,7 @@ public class TestActivity extends AppCompatActivity {
         setContentView(R.layout.activity_test);
 
         //generate list
-        ArrayList<String> list = new ArrayList<String>();
+        ArraySet<String> list = new ArraySet<>();
         list.add("item1");
         list.add("item2");
 

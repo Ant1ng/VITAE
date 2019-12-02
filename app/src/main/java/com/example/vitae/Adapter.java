@@ -9,15 +9,16 @@ import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
+import androidx.collection.ArraySet;
+
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class Adapter extends BaseAdapter implements ListAdapter {
-    private ArrayList<String> list = new ArrayList<String>();
+    private ArraySet<String> list;
     private Context context;
 
-
-
-    public Adapter(ArrayList<String> list, Context context) {
+    public Adapter(ArraySet<String> list, Context context) {
         this.list = list;
         this.context = context;
     }
@@ -29,7 +30,7 @@ public class Adapter extends BaseAdapter implements ListAdapter {
 
     @Override
     public Object getItem(int pos) {
-        return list.get(pos);
+        return list.valueAt(pos);
     }
 
     @Override
@@ -48,7 +49,7 @@ public class Adapter extends BaseAdapter implements ListAdapter {
 
         //Handle TextView and display string from your list
         TextView listItemText = (TextView)view.findViewById(R.id.list_item_string);
-        listItemText.setText(list.get(position));
+        listItemText.setText(list.valueAt(position));
 
         //Handle buttons and add onClickListeners
         Button deleteBtn = (Button)view.findViewById(R.id.delete_btn);

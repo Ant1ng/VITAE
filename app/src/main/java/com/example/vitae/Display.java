@@ -2,6 +2,7 @@ package com.example.vitae;
 
 import android.os.Bundle;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
@@ -14,6 +15,6 @@ public class Display extends Entries {
         YouTubePlayerView youTubePlayerView = findViewById(R.id.youtube_player_view);
         getLifecycle().addObserver(youTubePlayerView);
 
-        init("lol", (LinearLayout) findViewById(R.id.FAQ));
+        init("lol", (ListView) findViewById(R.id.FAQ));
     }
 }

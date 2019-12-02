@@ -9,6 +9,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.collection.ArraySet;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -16,20 +17,22 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
 public class Entries extends AppCompatActivity {
-    private Collection<String> entryList;
-    private LinearLayout linearLayout;
+    private ArraySet<String> entryList;
+    private ListView listView;
     private String filename;
 
-    protected void init(String filename, LinearLayout linearLayout) {
+    protected void init(String filename, ListView listView) {
         this.filename = filename;
-        this.linearLayout = linearLayout;
+        this.listView = listView;
         entryList = readFile(getBaseContext(), filename);
-        restartEntries();
+        Adapter adapter = new Adapter(entryList, getBaseContext());
+        listView.setAdapter(adapter);
     }
 
     public void write(View view) {
@@ -37,59 +40,7 @@ public class Entries extends AppCompatActivity {
         String question;
         if ((question = questionView.getText().toString()).trim().length() > 0) {
             entryList.add(question);
-            restartEntries();
             writeFile(getBaseContext(), filename, entryList);
-        }
-    }
-
-    private void writeEntry(final String entry) {
-        final LinearLayout questionEntry = new LinearLayout(getBaseContext());
-
-        questionEntry.setOrientation(LinearLayout.HORIZONTAL);
-
-        TextView textView = new TextView(this);
-        textView.setTextAppearance(this, R.style.BaseText);
-        textView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT));
-        textView.setText(entry);
-        questionEntry.addView(textView);
-        questionEntry.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(), Answers.class);
-                intent.putExtra("question", entry);
-                intent.putExtra("id", filename);
-                startActivity(intent);
-            }
-        });
-
-        /*TextView blank = new TextView(this);
-        questionEntry.addView(blank);
-        blank.setLayoutParams(new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                1.0f));
-         */
-
-        Button delete = new Button(getBaseContext());
-        delete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                entryList.remove(entry);
-                linearLayout.removeView(questionEntry);
-                deleteFile(entry);
-                writeFile(getBaseContext(), filename, entryList);
-            }
-        });
-        questionEntry.addView(delete);
-
-        linearLayout.addView(questionEntry);
-    }
-
-    private void restartEntries() {
-        linearLayout.removeAllViews();
-        for (String s : entryList) {
-            writeEntry(s);
         }
     }
 
@@ -107,8 +58,8 @@ public class Entries extends AppCompatActivity {
         }
     }
 
-    public static Collection<String> readFile(Context context, String filename) {
-        Set<String> lines = new HashSet<>();
+    public static ArraySet<String> readFile(Context context, String filename) {
+        ArraySet<String> lines = new ArraySet<>();
         try {
             FileInputStream fis = context.openFileInput(filename);
             BufferedReader reader = new BufferedReader(new InputStreamReader(fis));
