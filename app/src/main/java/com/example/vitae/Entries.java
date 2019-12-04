@@ -50,7 +50,7 @@ public class Entries extends AppCompatActivity {
                         entryList.add(question);
                         writeFile();
                     }
-                    return true;
+                    return false;
                 }
                 return false;
             }

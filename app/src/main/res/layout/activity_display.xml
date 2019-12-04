@@ -50,15 +50,14 @@
 
         <EditText
             android:id="@+id/editQuestion"
+            style="@style/EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
             android:hint="Enter question here..."
             android:inputType="textPersonName"
-            android:padding="10dp"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF" />
+            android:padding="10dp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

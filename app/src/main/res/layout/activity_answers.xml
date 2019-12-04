@@ -7,11 +7,18 @@
     android:orientation="vertical"
     tools:context=".Answers">
 
+    <include
+        android:id="@+id/include"
+        layout="@layout/overlay"
+        tools:layout_editor_absoluteX="-106dp"
+        tools:layout_editor_absoluteY="0dp" />
+
     <TextView
         android:id="@+id/titleView"
         style="@style/BaseText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
         android:text="Reply to this question:"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -44,6 +51,7 @@
 
         <EditText
             android:id="@+id/editQuestion"
+            style="@style/EditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
