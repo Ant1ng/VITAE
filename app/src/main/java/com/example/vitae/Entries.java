@@ -26,12 +26,15 @@ public class Entries extends AppCompatActivity {
     private ArraySet<String> entryList;
     private ListView listView;
     private String filename;
+    private Context context;
+    protected Adapter adapter;
 
-    protected void init(String filename, ListView listView) {
+    protected void init(String filename, ListView listView, Context context) {
         this.filename = filename;
         this.listView = listView;
+        this.context = context;
         entryList = readFile(getBaseContext(), filename);
-        Adapter adapter = new Adapter(entryList, getBaseContext());
+        this.adapter = new Adapter(filename, this, context);
         listView.setAdapter(adapter);
     }
 
@@ -40,15 +43,15 @@ public class Entries extends AppCompatActivity {
         String question;
         if ((question = questionView.getText().toString()).trim().length() > 0) {
             entryList.add(question);
-            writeFile(getBaseContext(), filename, entryList);
+            writeFile();
         }
     }
 
-    public static void writeFile(Context context, String filename, Collection<String> text) {
+    public void writeFile() {
         try {
             FileOutputStream outputStream =
                     context.openFileOutput(filename, Context.MODE_PRIVATE);
-            for (String i : text) {
+            for (String i : entryList) {
                 outputStream.write(i.getBytes());
                 outputStream.write("\n".getBytes());
             }
@@ -58,7 +61,7 @@ public class Entries extends AppCompatActivity {
         }
     }
 
-    public static ArraySet<String> readFile(Context context, String filename) {
+    private ArraySet<String> readFile(Context context, String filename) {
         ArraySet<String> lines = new ArraySet<>();
         try {
             FileInputStream fis = context.openFileInput(filename);
@@ -75,5 +78,9 @@ public class Entries extends AppCompatActivity {
             lines.add("Ripperino");
         }
         return lines;
+    }
+
+    public ArraySet<String> getEntryList() {
+        return entryList;
     }
 }

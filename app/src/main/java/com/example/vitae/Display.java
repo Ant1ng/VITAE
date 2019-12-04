@@ -15,6 +15,6 @@ public class Display extends Entries {
         YouTubePlayerView youTubePlayerView = findViewById(R.id.youtube_player_view);
         getLifecycle().addObserver(youTubePlayerView);
 
-        init("lol", (ListView) findViewById(R.id.FAQ));
+        init("lol", (ListView) findViewById(R.id.FAQ), getBaseContext());
     }
 }

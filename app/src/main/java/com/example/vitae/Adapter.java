@@ -1,6 +1,7 @@
 package com.example.vitae;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,16 +12,28 @@ import android.widget.TextView;
 
 import androidx.collection.ArraySet;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
 public class Adapter extends BaseAdapter implements ListAdapter {
     private ArraySet<String> list;
+    private Entries entries;
+    private String id;
     private Context context;
+    private boolean answer = true;
 
-    public Adapter(ArraySet<String> list, Context context) {
+    public Adapter(String id, ArraySet<String> list, Context context) {
         this.list = list;
         this.context = context;
+        this.id = id;
+    }
+
+    public Adapter(String id, Entries entries, Context context) {
+        this.list = entries.getEntryList();
+        this.entries = entries;
+        this.context = context;
+        this.id = id;
+    }
+
+    public void removeAnswer() {
+        answer = false;
     }
 
     @Override
@@ -44,7 +57,10 @@ public class Adapter extends BaseAdapter implements ListAdapter {
         View view = convertView;
         if (view == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.list_entry, null);
+            view = inflater.inflate(R.layout.question_entry, null);
+            if (!answer) {
+                view = inflater.inflate(R.layout.answer_entry, null);
+            }
         }
 
         //Handle TextView and display string from your list
@@ -53,23 +69,28 @@ public class Adapter extends BaseAdapter implements ListAdapter {
 
         //Handle buttons and add onClickListeners
         Button deleteBtn = (Button)view.findViewById(R.id.delete_btn);
-        Button addBtn = (Button)view.findViewById(R.id.add_btn);
-
         deleteBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 //do something
-                list.remove(position); //or some other task
+                list.removeAt(position);
+                entries.writeFile();
                 notifyDataSetChanged();
             }
         });
-        addBtn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                //do something
-                notifyDataSetChanged();
-            }
-        });
+        if (answer) {
+            Button answerBtn = (Button)view.findViewById(R.id.answer_btn);
+            answerBtn.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    //do something
+                    Intent intent = new Intent(v.getContext(), Answers.class);
+                    intent.putExtra("question", list.valueAt(position));
+                    intent.putExtra("id", id);
+                    v.getContext().startActivity(intent);
+                }
+            });
+        }
 
         return view;
     }

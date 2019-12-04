@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 public class Answers extends Entries {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +20,8 @@ public class Answers extends Entries {
         String id = intent.getStringExtra("id");
         textView.setText(question);
 
-        init(id + question, (ListView) findViewById(R.id.answers));
+        init(id + question, (ListView) findViewById(R.id.answers), getBaseContext());
+        adapter.removeAnswer();
     }
 
     @Override

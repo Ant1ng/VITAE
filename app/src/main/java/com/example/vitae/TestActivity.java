@@ -19,7 +19,7 @@ public class TestActivity extends AppCompatActivity {
         list.add("item2");
 
         //instantiate custom adapter
-        Adapter adapter = new Adapter(list, this);
+        Adapter adapter = new Adapter("hello", list, this);
 
         //handle listview and assign adapter
         ListView lView = (ListView)findViewById(R.id.my_listview);
