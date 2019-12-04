@@ -3,8 +3,6 @@
     package="com.example.vitae">
 
     <uses-permission android:name="android.permission.INTERNET"/>
-
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
@@ -14,14 +12,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".Answers"></activity>
+        <activity android:name=".Answers"/>
         <activity android:name=".Search">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Display" />
+        <activity android:name=".TestActivity"/>
+        <activity android:name=".Display"/>
     </application>
 
 </manifest>

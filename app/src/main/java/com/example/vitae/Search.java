@@ -36,7 +36,7 @@ import java.util.concurrent.ExecutionException;
 public class Search extends AppCompatActivity {
 
     final String TAG = "SEARCH";
-    private final String API_KEY = "AIzaSyBce8QFxGpNrYiO2w8OCRbSp7cTBmcE9JM";
+    private final String API_KEY = "AIzaSyDJZjhbPr9BSwMoYFkzwinteDYsipAvKXs";
 
     public ArrayList<Video> currentVideos;
     boolean loaded = false;
