@@ -15,15 +15,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".Answers"></activity>
-        <activity android:name=".Search" />
-        <activity android:name=".Display" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Search">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Display" />
     </application>
 
 </manifest>
