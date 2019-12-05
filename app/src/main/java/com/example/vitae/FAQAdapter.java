@@ -12,20 +12,20 @@ import android.widget.TextView;
 
 import androidx.collection.ArraySet;
 
-public class Adapter extends BaseAdapter implements ListAdapter {
+public class FAQAdapter extends BaseAdapter implements ListAdapter {
     private ArraySet<String> list;
     private Entries entries;
     private String id;
     private Context context;
     private boolean answer = true;
 
-    public Adapter(String id, ArraySet<String> list, Context context) {
+    public FAQAdapter(String id, ArraySet<String> list, Context context) {
         this.list = list;
         this.context = context;
         this.id = id;
     }
 
-    public Adapter(String id, Entries entries, Context context) {
+    public FAQAdapter(String id, Entries entries, Context context) {
         this.list = entries.getEntryList();
         this.entries = entries;
         this.context = context;

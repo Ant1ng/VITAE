@@ -1,13 +1,9 @@
 package com.example.vitae;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.KeyEvent;
-import android.view.View;
 import android.view.inputmethod.EditorInfo;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -20,24 +16,20 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
 
 public class Entries extends AppCompatActivity {
     private ArraySet<String> entryList;
     private ListView listView;
     private String filename;
     private Context context;
-    protected Adapter adapter;
+    protected FAQAdapter adapter;
 
     protected void init(String filename, ListView listView, Context context) {
         this.filename = filename;
         this.listView = listView;
         this.context = context;
         entryList = readFile(getBaseContext(), filename);
-        this.adapter = new Adapter(filename, this, context);
+        this.adapter = new FAQAdapter(filename, this, context);
         listView.setAdapter(adapter);
 
         final EditText questionView = findViewById(R.id.editQuestion);
