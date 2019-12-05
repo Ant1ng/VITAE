@@ -1,41 +1,44 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/GrayLike">
 
     <include
-        android:id="@+id/include"
-        layout="@layout/overlay"
-        tools:layout_editor_absoluteX="-106dp"
-        tools:layout_editor_absoluteY="0dp" />
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
         android:id="@+id/youtube_player_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:videoId="dQw4w9WgXcQ"></com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView>
 
     <TextView
         android:id="@+id/textView"
         style="@style/BaseText"
-        android:layout_width="403dp"
+        android:layout_width="0dp"
         android:layout_height="61dp"
         android:background="@color/BlackLike"
         android:text="Questions and Answers:"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/youtube_player_view" />
 
     <ListView
         android:id="@+id/FAQ"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_weight="0"
-        app:layout_constraintTop_toBottomOf="@id/textView" />
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView"
+        app:layout_constraintVertical_bias="0.0" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -43,10 +46,9 @@
         android:layout_height="wrap_content"
 
         android:layout_weight="1"
+        android:background="@color/BlackLike"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/FAQ"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <EditText
             android:id="@+id/editQuestion"
@@ -59,5 +61,4 @@
             android:inputType="textPersonName"
             android:padding="10dp" />
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

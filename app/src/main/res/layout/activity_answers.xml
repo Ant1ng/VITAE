@@ -4,14 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/GrayLike"
     android:orientation="vertical"
     tools:context=".Answers">
 
     <include
-        android:id="@+id/include"
-        layout="@layout/overlay"
-        tools:layout_editor_absoluteX="-106dp"
-        tools:layout_editor_absoluteY="0dp" />
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"/>
 
     <TextView
         android:id="@+id/titleView"
@@ -34,7 +33,10 @@
     <ListView
         android:id="@+id/answers"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/questionView">
 
     </ListView>
@@ -45,6 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="horizontal"
+        android:background="@color/BlackLike"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/FAQ"
         app:layout_constraintVertical_bias="1.0">

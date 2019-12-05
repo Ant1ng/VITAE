@@ -6,12 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include
-        android:id="@+id/include"
-        layout="@layout/overlay"
-        tools:layout_editor_absoluteX="-106dp"
-        tools:layout_editor_absoluteY="0dp" />
-
     <View
         android:id="@+id/vid1_border"
         android:layout_width="0dp"

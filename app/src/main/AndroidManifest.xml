@@ -11,6 +11,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:background="@color/GrayLike"
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".Answers"/>
         <activity android:name=".Search">
