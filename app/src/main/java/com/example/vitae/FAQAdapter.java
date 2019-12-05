@@ -19,12 +19,6 @@ public class FAQAdapter extends BaseAdapter implements ListAdapter {
     private Context context;
     private boolean answer = true;
 
-    public FAQAdapter(String id, ArraySet<String> list, Context context) {
-        this.list = list;
-        this.context = context;
-        this.id = id;
-    }
-
     public FAQAdapter(String id, Entries entries, Context context) {
         this.list = entries.getEntryList();
         this.entries = entries;
