@@ -52,9 +52,6 @@ public class FAQAdapter extends BaseAdapter implements ListAdapter {
         if (view == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             view = inflater.inflate(R.layout.question_entry, null);
-            if (!answer) {
-                view = inflater.inflate(R.layout.answer_entry, null);
-            }
         }
 
         //Handle TextView and display string from your list
@@ -72,8 +69,8 @@ public class FAQAdapter extends BaseAdapter implements ListAdapter {
                 notifyDataSetChanged();
             }
         });
+        Button answerBtn = (Button)view.findViewById(R.id.answer_btn);
         if (answer) {
-            Button answerBtn = (Button)view.findViewById(R.id.answer_btn);
             answerBtn.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View v) {
@@ -84,6 +81,8 @@ public class FAQAdapter extends BaseAdapter implements ListAdapter {
                     v.getContext().startActivity(intent);
                 }
             });
+        } else {
+            answerBtn.setVisibility(View.GONE);
         }
 
         return view;
