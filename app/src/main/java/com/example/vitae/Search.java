@@ -121,7 +121,7 @@ public class Search extends AppCompatActivity {
             JSONObject defaultThumbnail = thumbnails.getJSONObject("high");
 
             this.thumbnailURL = defaultThumbnail.getString("url");
-            this.publishedAt = snippet.getString("publishedAt");
+            this.publishedAt = snippet.getString("publishedAt").substring(0, 10);
             this.title = snippet.getString("title");
             this.description = snippet.getString("description");
             this.videoID = id.getString("videoId");
