@@ -34,7 +34,7 @@ public class Search extends AppCompatActivity {
     private final String API_KEY = "AIzaSyDJZjhbPr9BSwMoYFkzwinteDYsipAvKXs";
 
     public ArrayList<Video> currentVideos;
-    public ArrayList<Video> localVideos;
+    public ArrayList<VITAEVideo> localVideos;
 
     boolean loaded = false;
 
@@ -45,6 +45,7 @@ public class Search extends AppCompatActivity {
         setContentView(R.layout.activity_search);
         currentVideos = new ArrayList<>();
         localVideos = new ArrayList<>();
+        localVideos.add(new VITAEVideo("/sdcard/DCIM/Camera/20190616_112213.mp4"));
 
         final EditText searchBar = (EditText) findViewById(R.id.search);
         searchBar.setOnKeyListener(new View.OnKeyListener() {
@@ -83,7 +84,7 @@ public class Search extends AppCompatActivity {
 
     protected void showResults() {
         ListView listView = findViewById(R.id.listView);
-        VideoAdapter adapter = new VideoAdapter(currentVideos, currentVideos, getBaseContext());
+        VideoAdapter adapter = new VideoAdapter(localVideos, currentVideos, getBaseContext());
         listView.setAdapter(adapter);
     }
 
@@ -96,6 +97,14 @@ public class Search extends AppCompatActivity {
         Log.d(TAG, "setCurrentVideos: " + "called");
         this.currentVideos = videoList;
         loaded = true;
+    }
+
+    class VITAEVideo {
+        String path;
+
+        VITAEVideo(String path) {
+            this.path = path;
+        }
     }
 
     class Video {

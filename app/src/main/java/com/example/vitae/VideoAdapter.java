@@ -20,13 +20,13 @@ import java.util.Date;
 public class VideoAdapter extends BaseAdapter implements ListAdapter {
 
     private ArrayList<Search.Video> youtubeList;
-    private ArrayList<Search.Video> VITAEList;
+    private ArrayList<Search.VITAEVideo> VITAEList;
 
     private String youtubeTitle = "Results from YouTube";
     private String VITAETitle = "Results from VITAE";
     private Context context;
 
-    public VideoAdapter(ArrayList VITAEList, ArrayList youtubeList, Context context) {
+    public VideoAdapter(ArrayList<Search.VITAEVideo> VITAEList, ArrayList<Search.Video> youtubeList, Context context) {
         this.youtubeList = youtubeList;
         this.VITAEList = VITAEList;
         this.context = context;
@@ -118,7 +118,17 @@ public class VideoAdapter extends BaseAdapter implements ListAdapter {
         TextView publishedText = view.findViewById(R.id.publishedAt);
         publishedText.setText("");
 
-        ImageView thumbnail = view.findViewById(R.id.thumbnail);
+        Log.d("VIDEO", Integer.toString(position));
+        final Search.VITAEVideo video = (Search.VITAEVideo) getItem(position);
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), VITAEDisplay.class);
+                intent.putExtra("path", video.path);
+                v.getContext().startActivity(intent);
+            }
+        });;
     }
 
     @Override
@@ -136,8 +146,10 @@ public class VideoAdapter extends BaseAdapter implements ListAdapter {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(R.layout.entry_video, null);
 
-        if (position > getVITAECount() || true) {
+        if (position > getVITAECount()) {
             youtubeEntry(position, view);
+        } else {
+            VITAEEntry(position, view);
         }
 
         return view;

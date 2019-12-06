@@ -1,27 +1,22 @@
 package com.example.vitae;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.util.Log;
 import android.widget.ListView;
 import android.widget.MediaController;
 import android.widget.VideoView;
 
-import java.io.File;
-
-public class VideoActivity extends Entries {
+public class VITAEDisplay extends Entries {
 
     private VideoView videoView;
     private MediaController mediaController;
-    private String path = "/sdcard/DCIM/Camera/20190616_112213.mp4";
+    private String path;
     private String name = "20190616_112213";
     private String TAG = "LOCAL_VIDEO";
 
@@ -30,10 +25,13 @@ public class VideoActivity extends Entries {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video);
 
+        Intent intent = getIntent();
+        this.path = intent.getStringExtra("path");
+
         videoView = findViewById(R.id.videoView);
 
         if (mediaController == null) {
-            mediaController = new MediaController(VideoActivity.this);
+            mediaController = new MediaController(VITAEDisplay.this);
             mediaController.setAnchorView(findViewById(R.id.linearLayout));
         }
 
@@ -57,7 +55,7 @@ public class VideoActivity extends Entries {
 
     public void startMovie() {
         videoView.setMediaController(mediaController);
-        videoView.setVideoURI(Uri.parse("/sdcard/DCIM/Camera/20190616_112213.mp4"));
+        videoView.setVideoURI(Uri.parse(path));
         videoView.start();
     }
 }
