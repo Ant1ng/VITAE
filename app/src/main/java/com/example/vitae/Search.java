@@ -38,7 +38,6 @@ public class Search extends AppCompatActivity {
 
     boolean loaded = false;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(TAG, "onCreate: " + "called");
@@ -84,7 +83,7 @@ public class Search extends AppCompatActivity {
 
     protected void showResults() {
         ListView listView = findViewById(R.id.listView);
-        VideoAdapter adapter = new VideoAdapter(localVideos, currentVideos, getBaseContext());
+        VideoAdapter adapter = new VideoAdapter(currentVideos, currentVideos, getBaseContext());
         listView.setAdapter(adapter);
     }
 

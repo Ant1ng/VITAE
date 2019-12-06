@@ -1,6 +1,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -45,11 +46,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:layout_margin="10dp"
         android:layout_weight="1"
         android:background="@color/BlackLike"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent">
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="10dp">
 
         <EditText
             android:id="@+id/editQuestion"
@@ -59,7 +61,6 @@
             android:layout_weight="1"
             android:ems="10"
             android:hint="Enter question here..."
-            android:inputType="textPersonName"
-            android:padding="10dp" />
+            android:inputType="textPersonName" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

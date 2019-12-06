@@ -11,15 +11,18 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
+import android.widget.ListView;
 import android.widget.MediaController;
 import android.widget.VideoView;
 
 import java.io.File;
 
-public class VideoActivity extends AppCompatActivity {
+public class VideoActivity extends Entries {
 
     private VideoView videoView;
     private MediaController mediaController;
+    private String path = "/sdcard/DCIM/Camera/20190616_112213.mp4";
+    private String name = "20190616_112213";
     private String TAG = "LOCAL_VIDEO";
 
     @Override
@@ -40,6 +43,7 @@ public class VideoActivity extends AppCompatActivity {
         } else {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
         }
+        init(name, (ListView) findViewById(R.id.FAQ), getBaseContext());
     }
 
     @Override

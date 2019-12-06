@@ -16,15 +16,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".VideoActivity">
+        </activity>
+        <activity android:name=".TestActivity"></activity>
+        <activity android:name=".Answers" />
+        <activity android:name=".Search">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".TestActivity"></activity>
-        <activity android:name=".Answers" />
-        <activity android:name=".Search">
         </activity>
         <activity android:name=".Display" />
     </application>
