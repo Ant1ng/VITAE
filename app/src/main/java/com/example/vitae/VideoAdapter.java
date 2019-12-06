@@ -71,20 +71,7 @@ public class VideoAdapter extends BaseAdapter implements ListAdapter {
         //just return 0 if your youtubeList items do not have an Id variable.
     }
 
-    @Override
-    public View getView(final int position, View convertView, ViewGroup parent) {
-        View view;
-
-        if (position == 0 || position == getVITAECount()) {
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.entry_title, null);
-            TextView title = view.findViewById(R.id.title);
-            title.setText((String) getItem(position));
-            return view;
-        }
-        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        view = inflater.inflate(R.layout.entry_video, null);
-
+    private void youtubeEntry(final int position, View view) {
         TextView titleText = view.findViewById(R.id.title);
         titleText.setText("Title");
 
@@ -122,6 +109,36 @@ public class VideoAdapter extends BaseAdapter implements ListAdapter {
                 v.getContext().startActivity(intent);
             }
         });;
+    }
+
+    private void VITAEEntry(final int position, View view) {
+        TextView titleText = view.findViewById(R.id.title);
+        titleText.setText("Title");
+
+        TextView publishedText = view.findViewById(R.id.publishedAt);
+        publishedText.setText("");
+
+        ImageView thumbnail = view.findViewById(R.id.thumbnail);
+    }
+
+    @Override
+    public View getView(final int position, View convertView, ViewGroup parent) {
+        View view;
+
+        //Check if title, include it into the ListView
+        if (position == 0 || position == getVITAECount()) {
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            view = inflater.inflate(R.layout.entry_title, null);
+            TextView title = view.findViewById(R.id.title);
+            title.setText((String) getItem(position));
+            return view;
+        }
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        view = inflater.inflate(R.layout.entry_video, null);
+
+        if (position > getVITAECount() || true) {
+            youtubeEntry(position, view);
+        }
 
         return view;
     }
