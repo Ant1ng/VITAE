@@ -56,7 +56,6 @@ public class Search extends AppCompatActivity {
                     InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
 
-
                     String text = searchBar.getText().toString();
                     text = text.replace(" ", "+");
                     try {
@@ -74,6 +73,13 @@ public class Search extends AppCompatActivity {
                 return false;
             }
         });
+        try {
+            fetchYoutube("Software Engineer");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        searchBar.setText("Software Engineer");
+        showResults();
     }
 
     protected void showResults() {

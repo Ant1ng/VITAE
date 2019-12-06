@@ -112,7 +112,7 @@ public class VideoAdapter extends BaseAdapter implements ListAdapter {
             Log.d("VIDEO", "DateParse failed");
         }
 
-        publishedText.setText(video.publishedAt);
+        //publishedText.setText(video.publishedAt);
         Picasso.get().load(video.thumbnailURL).placeholder(R.drawable.loop_foreground).fit().centerCrop().into(thumbnail);
         view.setOnClickListener(new View.OnClickListener() {
             @Override
