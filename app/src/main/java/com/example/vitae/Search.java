@@ -31,7 +31,8 @@ import java.util.concurrent.ExecutionException;
 public class Search extends AppCompatActivity {
 
     final String TAG = "SEARCH";
-    private final String API_KEY = "AIzaSyDJZjhbPr9BSwMoYFkzwinteDYsipAvKXs";
+    private final String API_KEY = BuildConfig.YouTubeAPIKey;
+    private final String defaultJob = "Software Engineer";
 
     public ArrayList<Video> currentVideos;
     public ArrayList<VITAEVideo> localVideos;
@@ -45,6 +46,8 @@ public class Search extends AppCompatActivity {
         setContentView(R.layout.activity_search);
         currentVideos = new ArrayList<>();
         localVideos = new ArrayList<>();
+
+        // TODO: Remove this line and populate localVideos
         localVideos.add(new VITAEVideo("/sdcard/DCIM/Camera/20190616_112213.mp4"));
 
         final EditText searchBar = (EditText) findViewById(R.id.search);
@@ -74,11 +77,11 @@ public class Search extends AppCompatActivity {
             }
         });
         try {
-            fetchYoutube("Software Engineer");
+            fetchYoutube(defaultJob);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        searchBar.setText("Software Engineer");
+        searchBar.setText(defaultJob);
         showResults();
     }
 
