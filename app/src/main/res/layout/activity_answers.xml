@@ -10,7 +10,7 @@
 
     <include
         android:id="@+id/toolbar"
-        layout="@layout/toolbar"/>
+        layout="@layout/overlay_toolbar"/>
 
     <TextView
         android:id="@+id/titleView"

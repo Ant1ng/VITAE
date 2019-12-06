@@ -51,7 +51,7 @@ public class FAQAdapter extends BaseAdapter implements ListAdapter {
         View view = convertView;
         if (view == null) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.question_entry, null);
+            view = inflater.inflate(R.layout.entry_question_answer, null);
         }
 
         //Handle TextView and display string from your list

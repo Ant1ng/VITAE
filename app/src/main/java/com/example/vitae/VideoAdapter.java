@@ -2,8 +2,6 @@ package com.example.vitae;
 
 import android.content.Context;
 import android.content.Intent;
-import android.nfc.Tag;
-import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,8 +11,6 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.TextView;
 
-import androidx.collection.ArraySet;
-
 import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
@@ -23,47 +19,71 @@ import java.util.Date;
 
 public class VideoAdapter extends BaseAdapter implements ListAdapter {
 
-    private ArrayList<Search.Video> list;
+    private ArrayList<Search.Video> youtubeList;
+    private ArrayList<Search.Video> VITAEList;
+
     private String youtubeTitle = "Results from YouTube";
+    private String VITAETitle = "Results from VITAE";
     private Context context;
 
-    public VideoAdapter(ArrayList list, Context context) {
-        this.list = list;
+    public VideoAdapter(ArrayList VITAEList, ArrayList youtubeList, Context context) {
+        this.youtubeList = youtubeList;
+        this.VITAEList = VITAEList;
         this.context = context;
+    }
+
+    public int getVITAECount() {
+        int length = VITAEList.size();
+        if (VITAEList.size() > 0) {
+            length += 1;
+        }
+        return length;
+    }
+
+    public int getYouTubeCount() {
+        int length = youtubeList.size();
+        if (youtubeList.size() > 0) {
+            length += 1;
+        }
+        return length;
     }
 
     @Override
     public int getCount() {
-        return list.size() + 1;
+        return getVITAECount() + getYouTubeCount();
     }
 
     @Override
     public Object getItem(int pos) {
-        if (pos == 0) {
+        if (pos == getVITAECount()) {
             return youtubeTitle;
+        } else if (pos == 0) {
+            return VITAETitle;
+        } else if (pos > getVITAECount()) {
+            return youtubeList.get(pos - getVITAECount() - 1);
         }
-        return list.get(pos - 1);
+        return VITAEList.get(pos - 1);
     }
 
     @Override
     public long getItemId(int pos) {
         return 0;
-        //just return 0 if your list items do not have an Id variable.
+        //just return 0 if your youtubeList items do not have an Id variable.
     }
 
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         View view;
 
-        if (position == 0) {
+        if (position == 0 || position == getVITAECount()) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            view = inflater.inflate(R.layout.title_entry, null);
+            view = inflater.inflate(R.layout.entry_title, null);
             TextView title = view.findViewById(R.id.title);
-            title.setText(this.youtubeTitle);
+            title.setText((String) getItem(position));
             return view;
         }
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        view = inflater.inflate(R.layout.video_entry, null);
+        view = inflater.inflate(R.layout.entry_video, null);
 
         TextView titleText = view.findViewById(R.id.title);
         titleText.setText("Title");
@@ -73,7 +93,7 @@ public class VideoAdapter extends BaseAdapter implements ListAdapter {
 
         ImageView thumbnail = view.findViewById(R.id.thumbnail);
 
-        final Search.Video video = list.get(position - 1);
+        final Search.Video video = (Search.Video) getItem(position);
 
         String trimmed_title = "";
         try {

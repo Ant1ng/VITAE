@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,6 +34,8 @@ public class Search extends AppCompatActivity {
     private final String API_KEY = "AIzaSyDJZjhbPr9BSwMoYFkzwinteDYsipAvKXs";
 
     public ArrayList<Video> currentVideos;
+    public ArrayList<Video> localVideos;
+
     boolean loaded = false;
 
 
@@ -44,6 +45,7 @@ public class Search extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         currentVideos = new ArrayList<>();
+        localVideos = new ArrayList<>();
 
         final EditText searchBar = (EditText) findViewById(R.id.search);
         searchBar.setOnKeyListener(new View.OnKeyListener() {
@@ -76,7 +78,7 @@ public class Search extends AppCompatActivity {
 
     protected void showResults() {
         ListView listView = findViewById(R.id.listView);
-        VideoAdapter adapter = new VideoAdapter(currentVideos, getBaseContext());
+        VideoAdapter adapter = new VideoAdapter(localVideos, currentVideos, getBaseContext());
         listView.setAdapter(adapter);
     }
 
@@ -120,7 +122,6 @@ public class Search extends AppCompatActivity {
 
             System.out.println();
         }
-
     }
 
     class getYoutubeData extends AsyncTask<String, String, ArrayList<Video>> {

@@ -20,8 +20,8 @@ public class TestActivity extends AppCompatActivity {
         list.add("Hello");
         list.add("Goodbye");
 
-        VideoAdapter adapter = new VideoAdapter(list, getBaseContext());
+        //VideoAdapter adapter = new VideoAdapter(list, getBaseContext());
 
-        listView.setAdapter(adapter);
+        //listView.setAdapter(adapter);
     }
 }
