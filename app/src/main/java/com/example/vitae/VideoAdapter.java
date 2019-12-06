@@ -103,7 +103,7 @@ public class VideoAdapter extends BaseAdapter implements ListAdapter {
         }
 
         titleText.setText(trimmed_title.substring(0, trimmed_title.lastIndexOf(" ")));
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm a z");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         try {
             Date date = formatter.parse(video.publishedAt);
             SimpleDateFormat formatter2 = new SimpleDateFormat("MMMM dd yyyy");
@@ -112,7 +112,7 @@ public class VideoAdapter extends BaseAdapter implements ListAdapter {
             Log.d("VIDEO", "DateParse failed");
         }
 
-        publishedText.setText(video.publishedAt);
+        //publishedText.setText(video.publishedAt);
         Picasso.get().load(video.thumbnailURL).placeholder(R.drawable.loop_foreground).fit().centerCrop().into(thumbnail);
         view.setOnClickListener(new View.OnClickListener() {
             @Override

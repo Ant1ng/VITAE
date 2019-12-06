@@ -56,7 +56,6 @@ public class Search extends AppCompatActivity {
                     InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
 
-
                     String text = searchBar.getText().toString();
                     text = text.replace(" ", "+");
                     try {
@@ -74,6 +73,13 @@ public class Search extends AppCompatActivity {
                 return false;
             }
         });
+        try {
+            fetchYoutube("Software Engineer");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        searchBar.setText("Software Engineer");
+        showResults();
     }
 
     protected void showResults() {
@@ -115,7 +121,7 @@ public class Search extends AppCompatActivity {
             JSONObject defaultThumbnail = thumbnails.getJSONObject("high");
 
             this.thumbnailURL = defaultThumbnail.getString("url");
-            this.publishedAt = snippet.getString("publishedAt");
+            this.publishedAt = snippet.getString("publishedAt").substring(0, 10);
             this.title = snippet.getString("title");
             this.description = snippet.getString("description");
             this.videoID = id.getString("videoId");
