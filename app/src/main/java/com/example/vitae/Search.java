@@ -1,13 +1,17 @@
 package com.example.vitae;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -39,15 +43,19 @@ public class Search extends AppCompatActivity {
 
     boolean loaded = false;
 
+    private Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(TAG, "onCreate: " + "called");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
         currentVideos = new ArrayList<>();
-        localVideos = new ArrayList<>();
-
         localVideos = VITAEVideoStore.readVideo(getBaseContext());
+
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         final EditText searchBar = (EditText) findViewById(R.id.search);
         searchBar.setOnKeyListener(new View.OnKeyListener() {
@@ -82,6 +90,26 @@ public class Search extends AppCompatActivity {
         }
         searchBar.setText(defaultJob);
         showResults();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        if (id == R.id.action_search) {
+            Intent intent = new Intent(this, Upload.class);
+            startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     protected void showResults() {

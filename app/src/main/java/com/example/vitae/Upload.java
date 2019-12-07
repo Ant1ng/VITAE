@@ -30,12 +30,7 @@ import okhttp3.RequestBody;
 
 public class Upload extends AppCompatActivity {
 
-    public final String APP_TAG = "upload";
     public final static int image_request_code = 234;
-    public final static int description_request_code = 228;
-    public String photoFileName = "photo.jpg";
-    File photoFile;
-    ImageView video_image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -58,20 +53,11 @@ public class Upload extends AppCompatActivity {
             Uri selectedMediaUri = data.getData(); //video data
             //gets rid of no_video display
 
-            MediaMetadataRetriever mR = new MediaMetadataRetriever();
-            mR.setDataSource(getApplicationContext(), selectedMediaUri);
-            Bitmap bitmap = mR.getFrameAtTime();
-            String path = getPath(getBaseContext(), selectedMediaUri);
-            Log.d(APP_TAG, getPath(getBaseContext(), selectedMediaUri));
-
-            VITAEVideoStore.writeVideo(new VITAEVideo(
-                    "Get Dunked On!",
-                    path
-            ), getBaseContext());
+            Intent intent = new Intent(this, UploadDescription.class);
+            intent.putExtra("uri", selectedMediaUri.toString());
+            finish();
+            startActivity(intent);
         }
-
-        Intent intent = new Intent(this, Search.class);
-        startActivity(intent);
     }
 
     public static String getPath(final Context context, final Uri uri) {

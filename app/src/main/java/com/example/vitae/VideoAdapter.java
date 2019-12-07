@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.media.MediaMetadataRetriever;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -127,18 +129,24 @@ public class VideoAdapter extends BaseAdapter implements ListAdapter {
 
         titleText.setText(video.title);
 
-        if (video.imgpath == "N/A") {
-            thumbnail.setImageResource(R.drawable.default_missing);
+        Bitmap bmp;
+        if (video.imgpath.equals("N/A")) {
+            Uri uri = video.uri;
+            MediaMetadataRetriever mR = new MediaMetadataRetriever();
+            mR.setDataSource(view.getContext(), uri);
+            bmp = mR.getFrameAtTime();
         } else {
-            Bitmap bmp = BitmapFactory.decodeFile(video.imgpath);
-            thumbnail.setImageBitmap(bmp);
+            bmp = BitmapFactory.decodeFile(video.imgpath);
         }
+        thumbnail.setImageBitmap(bmp);
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), VITAEDisplay.class);
-                intent.putExtra("path", video.path);
+                Uri uri = video.uri;
+                String path = Upload.getPath(v.getContext(), uri);
+                intent.putExtra("path", path);
                 v.getContext().startActivity(intent);
             }
         });;

@@ -1,17 +1,20 @@
 package com.example.vitae;
 
+import android.graphics.Bitmap;
+import android.net.Uri;
+
 public class VITAEVideo {
-    String path;
     String imgpath;
     String title;
+    Uri uri;
 
-    VITAEVideo(String title, String path) {
-        this(title, path, "N/A");
+    VITAEVideo(String title, Uri uri) {
+        this(title, uri, "N/A");
     }
 
-    VITAEVideo(String title, String path, String imgpath) {
+    VITAEVideo(String title, Uri uri, String imgpath) {
         this.title = title;
-        this.path = path;
+        this.uri = uri;
         this.imgpath = imgpath;
     }
 }

@@ -1,6 +1,7 @@
 package com.example.vitae;
 
 import android.content.Context;
+import android.net.Uri;
 import android.util.Log;
 
 import java.io.BufferedReader;
@@ -19,7 +20,7 @@ public class VITAEVideoStore {
                     context.openFileOutput(filename, Context.MODE_PRIVATE);
             outputStream.write(video.title.getBytes());
             outputStream.write("\n".getBytes());
-            outputStream.write(video.path.getBytes());
+            outputStream.write(video.uri.toString().getBytes());
             outputStream.write("\n".getBytes());
             outputStream.write(video.imgpath.getBytes());
             outputStream.write("\n".getBytes());
@@ -38,8 +39,9 @@ public class VITAEVideoStore {
             while ((line = reader.readLine()) != null) {
                 String title = line;
                 String path = reader.readLine();
+                Uri uri = Uri.parse(path);
                 String imgpath = reader.readLine();
-                VITAEVideo video = new VITAEVideo(title, path, imgpath);
+                VITAEVideo video = new VITAEVideo(title, uri, imgpath);
                 videos.add(video);
             }
         }

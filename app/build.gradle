@@ -16,6 +16,7 @@ android {
         each { type ->
             type.buildConfigField STRING, 'YouTubeAPIKey', YOUTUBE_API_KEY
         }
+        vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
         release {

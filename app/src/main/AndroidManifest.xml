@@ -15,6 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".UploadDescription"></activity>
         <activity android:name=".Upload">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,11 +23,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".VITAEDisplay"></activity>
+        <activity android:name=".VITAEDisplay" />
         <activity android:name=".TestActivity" />
         <activity android:name=".Answers" />
-        <activity android:name=".Search">
-        </activity>
+        <activity android:name=".Search"></activity>
         <activity android:name=".Display" />
     </application>
 
