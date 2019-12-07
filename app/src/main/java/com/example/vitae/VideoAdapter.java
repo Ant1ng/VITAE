@@ -2,6 +2,8 @@ package com.example.vitae;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,13 +22,13 @@ import java.util.Date;
 public class VideoAdapter extends BaseAdapter implements ListAdapter {
 
     private ArrayList<Search.Video> youtubeList;
-    private ArrayList<Search.VITAEVideo> VITAEList;
+    private ArrayList<VITAEVideo> VITAEList;
 
     private String youtubeTitle = "Results from YouTube";
     private String VITAETitle = "Results from VITAE";
     private Context context;
 
-    public VideoAdapter(ArrayList<Search.VITAEVideo> VITAEList, ArrayList<Search.Video> youtubeList, Context context) {
+    public VideoAdapter(ArrayList<VITAEVideo> VITAEList, ArrayList<Search.Video> youtubeList, Context context) {
         this.youtubeList = youtubeList;
         this.VITAEList = VITAEList;
         this.context = context;
@@ -118,8 +120,19 @@ public class VideoAdapter extends BaseAdapter implements ListAdapter {
         TextView publishedText = view.findViewById(R.id.publishedAt);
         publishedText.setText("");
 
+        ImageView thumbnail = view.findViewById(R.id.thumbnail);
+
         Log.d("VIDEO", Integer.toString(position));
-        final Search.VITAEVideo video = (Search.VITAEVideo) getItem(position);
+        final VITAEVideo video = (VITAEVideo) getItem(position);
+
+        titleText.setText(video.title);
+
+        if (video.imgpath == "N/A") {
+            thumbnail.setImageResource(R.drawable.default_missing);
+        } else {
+            Bitmap bmp = BitmapFactory.decodeFile(video.imgpath);
+            thumbnail.setImageBitmap(bmp);
+        }
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override

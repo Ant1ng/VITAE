@@ -47,8 +47,7 @@ public class Search extends AppCompatActivity {
         currentVideos = new ArrayList<>();
         localVideos = new ArrayList<>();
 
-        // TODO: Remove this line and populate localVideos
-        localVideos.add(new VITAEVideo("/sdcard/DCIM/Camera/20190616_112213.mp4"));
+        localVideos = VITAEVideoStore.readVideo(getBaseContext());
 
         final EditText searchBar = (EditText) findViewById(R.id.search);
         searchBar.setOnKeyListener(new View.OnKeyListener() {
@@ -100,14 +99,6 @@ public class Search extends AppCompatActivity {
         Log.d(TAG, "setCurrentVideos: " + "called");
         this.currentVideos = videoList;
         loaded = true;
-    }
-
-    class VITAEVideo {
-        String path;
-
-        VITAEVideo(String path) {
-            this.path = path;
-        }
     }
 
     class Video {

@@ -24,6 +24,7 @@
             android:layout_height="270px"
             android:layout_marginStart="0dp"
             android:background="@color/LightGray"
+            android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
