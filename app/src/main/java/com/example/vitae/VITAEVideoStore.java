@@ -17,7 +17,7 @@ public class VITAEVideoStore {
     public static void writeVideo(VITAEVideo video, Context context) {
         try {
             FileOutputStream outputStream =
-                    context.openFileOutput(filename, Context.MODE_PRIVATE);
+                    context.openFileOutput(filename, Context.MODE_APPEND);
             outputStream.write(video.title.getBytes());
             outputStream.write("\n".getBytes());
             outputStream.write(video.uri.toString().getBytes());
