@@ -1,15 +1,22 @@
 apply plugin: 'com.android.application'
 
+def YOUTUBE_API_KEY = '"' + YouTubeAPIKey + '"' ?: '"Define YouTubeAPIKey"';
+def STRING = 'String'
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.example.vitae"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        each { type ->
+            type.buildConfigField STRING, 'YouTubeAPIKey', YOUTUBE_API_KEY
+        }
+        vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
         release {

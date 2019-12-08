@@ -5,7 +5,7 @@ import androidx.annotation.NonNull;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.LinearLayout;
+import android.widget.ListView;
 
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
@@ -44,7 +44,7 @@ public class Display extends Entries {
                 }
             }
         });
-        init(videoID, (LinearLayout) findViewById(R.id.FAQ));
+        init(videoID, (ListView) findViewById(R.id.FAQ), getBaseContext());
     }
 
     @Override

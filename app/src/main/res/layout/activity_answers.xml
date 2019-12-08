@@ -1,55 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/GrayLike"
     android:orientation="vertical"
     tools:context=".Answers">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/overlay_toolbar"/>
 
     <TextView
         android:id="@+id/titleView"
         style="@style/BaseText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Reply to this question:" />
+        android:layout_marginTop="64dp"
+        android:text="Reply to this question:"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/questionView"
         style="@style/BaseText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="TextView" />
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleView" />
 
-    <LinearLayout
+    <ListView
         android:id="@+id/answers"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical">
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/questionView">
 
-    </LinearLayout>
+    </ListView>
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_weight="1"
+        android:background="@color/BlackLike"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/FAQ"
+        app:layout_constraintVertical_bias="1.0"
+        tools:layout_editor_absoluteX="10dp">
 
         <EditText
             android:id="@+id/editQuestion"
-            android:layout_width="wrap_content"
+            style="@style/EditText"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="Enter answer here..."
+            android:hint="Enter question here..."
             android:inputType="textPersonName" />
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="write"
-            android:text="+" />
     </LinearLayout>
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
