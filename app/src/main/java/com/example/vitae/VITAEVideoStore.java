@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.util.Log;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
@@ -49,5 +50,9 @@ public class VITAEVideoStore {
             return videos;
         }
         return videos;
+    }
+
+    public static void deleteVideos(Context context) {
+        context.deleteFile(filename);
     }
 }

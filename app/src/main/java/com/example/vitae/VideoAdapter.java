@@ -28,6 +28,7 @@ public class VideoAdapter extends BaseAdapter implements ListAdapter {
 
     private String youtubeTitle = "Results from YouTube";
     private String VITAETitle = "Results from VITAE";
+    private String tag = "VITAEVIDEO";
     private Context context;
 
     public VideoAdapter(ArrayList<VITAEVideo> VITAEList, ArrayList<Search.Video> youtubeList, Context context) {
@@ -45,6 +46,9 @@ public class VideoAdapter extends BaseAdapter implements ListAdapter {
     }
 
     public int getYouTubeCount() {
+        if (youtubeList == null) {
+            return 0;
+        }
         int length = youtubeList.size();
         if (youtubeList.size() > 0) {
             length += 1;
@@ -133,6 +137,7 @@ public class VideoAdapter extends BaseAdapter implements ListAdapter {
         if (video.imgpath.equals("N/A")) {
             Uri uri = video.uri;
             MediaMetadataRetriever mR = new MediaMetadataRetriever();
+            Log.d(tag, String.valueOf(uri));
             mR.setDataSource(view.getContext(), uri);
             bmp = mR.getFrameAtTime();
         } else {

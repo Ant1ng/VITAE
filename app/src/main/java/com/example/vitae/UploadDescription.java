@@ -67,9 +67,6 @@ public class UploadDescription extends AppCompatActivity {
                     imgPath
             ), getBaseContext());
         }
-
-        Intent intent = new Intent(this, Search.class);
         finish();
-        startActivity(intent);
     }
 }

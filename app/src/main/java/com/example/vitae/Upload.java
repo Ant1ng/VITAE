@@ -60,6 +60,11 @@ public class Upload extends AppCompatActivity {
         }
     }
 
+    public void deleteAll(View v) {
+        VITAEVideoStore.deleteVideos(this);
+
+    }
+
     public static String getPath(final Context context, final Uri uri) {
 
         final boolean isKitKat = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
